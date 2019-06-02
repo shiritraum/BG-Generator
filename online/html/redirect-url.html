@@ -36,7 +36,7 @@
             document.getElementById("getConsentResponse").innerHTML ="";
 
             var xmlhttp = new XMLHttpRequest();
-            var url = protocol + '://' + port + '/' + hostName + '/' + organization + '/' + catalog + '/psd2/v1/consents';
+            var url = '/' + organization + '/' + catalog + '/psd2/v1/consents';
 
             xmlhttp.onreadystatechange = function() {
                if (this.readyState == 4) {
@@ -58,7 +58,7 @@
             document.getElementById("getAccountListResponse").innerHTML ="";
 
             var xmlhttp = new XMLHttpRequest();
-            var url = protocol + '://' + port + '/' + hostName + '/' + organization + '/' + catalog + '/psd2/v1/accounts';
+            var url = '/' + organization + '/' + catalog + '/psd2/v1/accounts';
 
             xmlhttp.onreadystatechange = function() {
                if (this.readyState == 4) {
