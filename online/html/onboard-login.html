@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h1>Application from for OAuth access</h1>
+      <form id="app_form" action="https://api.eu-gb.apiconnect.appdomain.cloud/coraladarboiorgil-dev/sb/oauth-provider/oauth2/authorize">
+         Client ID:<br>
+         <input id="client_id" style="width:300px" type="text" name="client_id">
+         <br><br>Redirect URL:<br>
+         <input id="redirect_uri" style="width:550px" type="text" name="redirect_uri">
+         <br><br>Scope:<br>
+         <input id="scope" style="width:150px" type="text" name="scope">
+         <br><br><br>
+         <input type="hidden" name="response_type" value="token">
+         <input style="font-size:20px;" type="submit" value="Submit">
+      </form>
+      <script>
+        var protocol = window.location.protocol;
+        var port = window.location.port;
+        var hostName = window.location.hostname;
+        var apicOrganization = new URL(window.location.href).pathname.split('/')[1]
+        var apicCatalog = new URL(window.location.href).pathname.split('/')[2]
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var clientId = urlParams.get('clientID') || urlParams.get('clientId') || urlParams.get('clientid') || urlParams.get('client_id') || "";
+        var redirectUrl = urlParams.get('redirectURL') || urlParams.get('redirectUrl') || urlParams.get('redirect_url') || protocol + '://' + port + '/' + hostName + '/' + apicOrganization + '/' + apicCatalog + '/oauth-utils/redirect-url';
+        var scope = urlParams.get('scope') || "view_accounts";
+
+        document.getElementById('client_id').value = clientId;
+        document.getElementById('redirect_uri').value = redirectUrl;
+        document.getElementById('scope').value = scope;
+        document.getElementById('app_form').action = protocol + '://' + port + '/' + hostName + '/' + apicOrganization + '/' + apicCatalog + '/oauth-provider/oauth2/authorize';
+      </script>
+   </body>
+</html>
