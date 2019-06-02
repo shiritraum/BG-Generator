@@ -367,7 +367,7 @@ try {
           }
           else {
             return true;
-          } 
+          }
         },
       },
       {
@@ -378,7 +378,7 @@ try {
       }
     ]
 
-    inquirer.prompt(questions).then(answers => {      
+    inquirer.prompt(questions).then(answers => {
       // Update all URLs within API's
       console.log("Update all URLs within API's...");
       if (securityRequired === "true") {
@@ -392,11 +392,11 @@ try {
       console.log("Logout old cli session...");
       //try { exec.execSync(`${apicAlias} logout --server ${answers['apicMgmtServer']}`, {stdio: 'inherit'}); } catch (ex) {}
 
-      try {  
+      try {
         if (apicVersion === "5") {
           console.log("Set cli connection string...");
           exec.execSync(`${apicAlias} config:set catalog=apic-catalog://${answers['apicMgmtServer']}/orgs/${apicOrganization}/catalogs/${apicCatalog}`, {stdio: 'inherit'});
-        
+
           if (answers['apicUser'].length > 0) {
             console.log("Login v5 cli without sso...");
             exec.execSync(`${apicAlias} login --server ${answers['apicMgmtServer']} --username ${answers['apicUser']} --password ${answers['apicPassword']}`, {stdio: 'inherit'});
@@ -412,7 +412,7 @@ try {
           try { exec.execSync(`${apicAlias} products:delete utils-product:1.0.0`, {stdio: 'inherit'}); } catch (ex) {}
           try { exec.execSync(`${apicAlias} drafts:delete --type product --server ${answers['apicMgmtServer']} --organization ${apicOrganization} bg-product:1.0.0`, {stdio: 'inherit'}); } catch (ex) {}
           try { exec.execSync(`${apicAlias} drafts:delete --type product --server ${answers['apicMgmtServer']} --organization ${apicOrganization} utils-product:1.0.0`, {stdio: 'inherit'}); } catch (ex) {}
-          
+
           if (securityRequired === "true") {
             console.log("Create new bg-product...");
             exec.execSync(`${apicAlias} create --type product --title "BG Product" --name bg-product --filename ${outPath}bg-product_1.0.0.yaml --apis "${outFile} oauth-provider_1.0.0.yaml"`, {stdio: 'inherit'});
@@ -439,18 +439,15 @@ try {
             //exec.execSync(`${apicAlias} publish ${outPath}utils-product_1.0.0.yaml`, {stdio: 'inherit'});
             exec.execSync(`${apicAlias} drafts:publish utils-product:1.0.0`, {stdio: 'inherit'});
 
-            console.log('\n');
             console.log('Register & Subscribe application');
             console.log('Redirect URL mock: ' + gatewayBaseURL + '/oauth-utils/redirect-url');
             console.log('Demo app URL: ' + gatewayBaseURL + '/oauth-utils/onboard-login');
-            console.log('\n');
           }
 
           console.log('Post consent URL: ' + gatewayBaseURL + '/psd2/v1/consents');
           console.log('Get accounts URL: ' + gatewayBaseURL + '/psd2/v1/accounts');
 
           if (devPortal) {
-            console.log('\n');
             console.log('Developer portal  URL: ' + devPortal);
           }
         }
@@ -496,18 +493,15 @@ try {
             exec.execSync(`${apicAlias} draft-products:create ${outPath}utils-product_1.0.0.yaml`, {stdio: 'inherit'});
             exec.execSync(`${apicAlias} products:publish ${outPath}utils-product_1.0.0.yaml`, {stdio: 'inherit'});
 
-            console.log('\n');
             console.log('Register & Subscribe application');
             console.log('Redirect URL mock: ' + gatewayBaseURL + '/oauth-utils/redirect-url');
             console.log('Demo app URL: ' + gatewayBaseURL + '/oauth-utils/onboard-login');
-            console.log('\n');
           }
 
           console.log('Post consent URL: ' + gatewayBaseURL + '/psd2/v1/consents');
           console.log('Get accounts URL: ' + gatewayBaseURL + '/psd2/v1/accounts');
 
           if (devPortal) {
-            console.log('\n');
             console.log('Developer portal  URL: ' + devPortal);
           }
         }
