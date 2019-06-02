@@ -427,9 +427,6 @@ try {
           //exec.execSync(`${apicAlias} publish ${outPath}bg-product_1.0.0.yaml`, {stdio: 'inherit'});
           exec.execSync(`${apicAlias} drafts:publish bg-product:1.0.0`, {stdio: 'inherit'});
 
-          console.log('\n');
-          console.log('Done');
-          console.log('****');
           if (securityRequired === "true") {
             console.log("Create new utils-product...");
             exec.execSync(`${apicAlias} create --type product --title "Utils Product" --name utils-product --filename ${outPath}utils-product_1.0.0.yaml --apis "oauth-utils_1.0.0.yaml"`, {stdio: 'inherit'});
@@ -439,15 +436,18 @@ try {
             //exec.execSync(`${apicAlias} publish ${outPath}utils-product_1.0.0.yaml`, {stdio: 'inherit'});
             exec.execSync(`${apicAlias} drafts:publish utils-product:1.0.0`, {stdio: 'inherit'});
 
+            console.log('\n');
             console.log('Register & Subscribe application');
             console.log('Redirect URL mock: ' + gatewayBaseURL + '/oauth-utils/redirect-url');
             console.log('Demo app URL: ' + gatewayBaseURL + '/oauth-utils/onboard-login');
           }
 
+          console.log('\n');
           console.log('Post consent URL: ' + gatewayBaseURL + '/psd2/v1/consents');
           console.log('Get accounts URL: ' + gatewayBaseURL + '/psd2/v1/accounts');
 
           if (devPortal) {
+            console.log('\n');
             console.log('Developer portal  URL: ' + devPortal);
           }
         }
@@ -479,9 +479,6 @@ try {
           exec.execSync(`${apicAlias} draft-products:create ${outPath}bg-product_1.0.0.yaml`, {stdio: 'inherit'});
           exec.execSync(`${apicAlias} products:publish ${outPath}bg-product_1.0.0.yaml`, {stdio: 'inherit'});
 
-          console.log('\n');
-          console.log('Done');
-          console.log('****');
           if (securityRequired === "true") {
             console.log("Create new utils-product...");
             exec.execSync(`${apicAlias} create:product --title "Utils Product" --name utils-product --filename ${outPath}utils-product_1.0.0.yaml --apis "oauth-utils_1.0.0.yaml"`, {stdio: 'inherit'});
@@ -493,15 +490,18 @@ try {
             exec.execSync(`${apicAlias} draft-products:create ${outPath}utils-product_1.0.0.yaml`, {stdio: 'inherit'});
             exec.execSync(`${apicAlias} products:publish ${outPath}utils-product_1.0.0.yaml`, {stdio: 'inherit'});
 
+            console.log('\n');
             console.log('Register & Subscribe application');
             console.log('Redirect URL mock: ' + gatewayBaseURL + '/oauth-utils/redirect-url');
             console.log('Demo app URL: ' + gatewayBaseURL + '/oauth-utils/onboard-login');
           }
 
+          console.log('\n');
           console.log('Post consent URL: ' + gatewayBaseURL + '/psd2/v1/consents');
           console.log('Get accounts URL: ' + gatewayBaseURL + '/psd2/v1/accounts');
 
           if (devPortal) {
+            console.log('\n');
             console.log('Developer portal  URL: ' + devPortal);
           }
         }

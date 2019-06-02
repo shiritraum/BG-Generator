@@ -22,14 +22,14 @@
 
         var urlParams = new URLSearchParams(window.location.search);
         var clientId = urlParams.get('clientID') || urlParams.get('clientId') || urlParams.get('clientid') || urlParams.get('client_id') || "";
-        var redirectUrl = urlParams.get('redirectURL') || urlParams.get('redirectUrl') || urlParams.get('redirect_url') || protocol + '://' + port + '/' + hostName + '/' + organization + '/' + catalog + '/oauth-utils/redirect-url';
+        var redirectUrl = urlParams.get('redirectURL') || urlParams.get('redirectUrl') || urlParams.get('redirect_url') || protocol +'//'+ hostName + (port ? ':' + port: '') + '/' + organization + '/' + catalog + '/oauth-utils/redirect-url';
         var scope = urlParams.get('scope') || "view_accounts";
 
         document.getElementById('client_id').value = clientId;
         document.getElementById('redirect_uri').value = redirectUrl;
         document.getElementById('scope').value = scope;
 
-        document.getElementById('app_form').action = '/' + organization + '/' + catalog + '/oauth-provider/oauth2/authorize';
+        document.getElementById('app_form').action = protocol +'//'+ hostName + (port ? ':' + port: '') + '/' + organization + '/' + catalog + '/oauth-provider/oauth2/authorize';
       </script>
    </body>
 </html>

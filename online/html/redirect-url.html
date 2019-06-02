@@ -77,7 +77,7 @@
             }
          }
          function restart() {
-           window.location.href = protocol + '://' + port + '/' + hostName + '/' + organization + '/' + catalog + '/oauth-utils/onboard-login';
+           window.location.href = protocol +'//'+ hostName + (port ? ':' + port: '') + '/' + organization + '/' + catalog + '/oauth-utils/onboard-login';
          }
       </script>
    </body>
